@@ -20,11 +20,21 @@
 </style>
 <script src="./src/Oscillator.js" type="module" ></script>
 <script src="./src/Envelope.js" type="module" ></script>
-    <script src="index.js" type="module"></script>
-    <title>Document</title>
+<script src="./src/BufferLoader.js" type="module" ></script>
+<script src="./src/Sequencer.js" type="module" ></script>
+<script src="./src/controllers/SequencerController.js" type="module" ></script>
+<script src="./src/events/SequencerEvent.js" type="module" ></script>
+<script src="index.js" type="module"></script>
+<title>Sequencer</title>
 </head>
 <body>
-    <button>start</button>
+
+
+    <div class="instruments"></div>
+    <div id="instrument"></div>
+    <div id="volume"></div>
+    <div id="bpm"></div>
+
     <div>
         <span class="seq-light" id="seq-0"></span>
         <span class="seq-light" id="seq-1"></span>
