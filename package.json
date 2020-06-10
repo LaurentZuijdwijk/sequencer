@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "name": "synth",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "node ./node_modules/.bin/dev-web-server PORT 9000 BASEDIR ."
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "dev-web-server": "^1.7.0"
+  }
+}
