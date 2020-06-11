@@ -11,7 +11,7 @@
       .sequencer {
         font-family: "Permanent Marker", cursive;
         color: cornsilk;
-        background-color: darkslategray;
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(13,13,54,1) 62%, rgba(2,0,36,1) 100%);
         padding: 20px;
         width: 800px;
         height: 500px;
@@ -27,14 +27,28 @@
       }
 
       .light.small {
+        margin: 0 auto;
+  width: 14px;
+  height: 14px;
+  background-color: #F00;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 5px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.7) 0 2px 7px;
+  /* -webkit-animation: blinkRed 0.5s infinite;
+  -moz-animation: blinkRed 0.5s infinite;
+  -ms-animation: blinkRed 0.5s infinite;
+  -o-animation: blinkRed 0.5s infinite;
+  animation: blinkRed 0.5s infinite; */
+
+
+/* 
         width: 15px;
-        height: 15px;
+        height: 15px; */
         display: inline-block;
         margin: 0 5px;
       }
 
       .light.on {
-        background-color: crimson;
+        background-color:#ff0000;
       }
 
       .light.off {
