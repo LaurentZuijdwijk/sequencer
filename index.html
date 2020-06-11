@@ -1,41 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .sequencer {
+        font-family: "Permanent Marker", cursive;
+        color: cornsilk;
+        background-color: darkslategray;
+        padding: 20px;
+        width: 800px;
+        height: 500px;
+        position: relative;
+      }
+      .sequence-lights {
+        display: flex;
+        justify-content: space-around;
+        width: 700px;
+        left: 50px;
+        position: absolute;
+        bottom: 20px;
+      }
 
-<style>
+      .light.small {
+        width: 15px;
+        height: 15px;
+        display: inline-block;
+        margin: 0 5px;
+      }
 
-.seq-light {
-    width: 30px;
-    height: 30px;
-    display: inline-block;
-    background-color: brown;
-}
+      .light.on {
+        background-color: crimson;
+      }
 
-.seq-light[active="true"] {
-    background-color: crimson;
-}
+      .light.off {
+        background-color: brown;
+      }
 
-</style>
-<script src="./src/Oscillator.js" type="module" ></script>
-<script src="./src/Envelope.js" type="module" ></script>
-<script src="./src/BufferLoader.js" type="module" ></script>
-<script src="./src/Sequencer.js" type="module" ></script>
-<script src="./src/controllers/SequencerController.js" type="module" ></script>
-<script src="./src/events/SequencerEvent.js" type="module" ></script>
-<script src="index.js" type="module"></script>
-<title>Sequencer</title>
-</head>
-<body>
+      .seq-light {
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        background-color: brown;
+      }
 
+      .seq-light[active="true"] {
+        background-color: crimson;
+      }
+    </style>
+    <script src="./src/Oscillator.js" type="module"></script>
+    <script src="./src/Envelope.js" type="module"></script>
+    <script src="./src/BufferLoader.js" type="module"></script>
+    <script src="./src/Sequencer.js" type="module"></script>
+    <script
+      src="./src/controllers/SequencerController.js"
+      type="module"
+    ></script>
+    <script src="./src/events/SequencerEvent.js" type="module"></script>
+    <script src="index.js" type="module"></script>
+    <title>Sequencer</title>
+  </head>
+  <body>
+    <div class="sequencer">
+      <div id="instruments"></div>
+      <div id="instrument"></div>
+      <div id="volume"></div>
+      <div id="bpm"></div>
 
-    <div class="instruments"></div>
-    <div id="instrument"></div>
-    <div id="volume"></div>
-    <div id="bpm"></div>
-
-    <div>
+      <div class="sequence-lights">
         <span class="seq-light" id="seq-0"></span>
         <span class="seq-light" id="seq-1"></span>
         <span class="seq-light" id="seq-2"></span>
@@ -52,11 +88,7 @@
         <span class="seq-light" id="seq-13"></span>
         <span class="seq-light" id="seq-14"></span>
         <span class="seq-light" id="seq-15"></span>
-
-        
+      </div>
     </div>
-
-
-
-</body>
+  </body>
 </html>

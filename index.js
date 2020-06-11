@@ -133,10 +133,78 @@ document.onkeydown = (key) => {
   controller.addEventListener(SequencerEvent.DATA_CHANGE, (event)=>{
 
     const data = event.detail.instrument;
-    document.getElementById('instrument').innerText = data
-    document.getElementById('volume').innerText =  event.detail.volume
-    document.getElementById('bpm').innerText =  event.detail.bpm
+    // document.getElementById('instrument').innerText = data
+    // document.getElementById('volume').innerText =  event.detail.volume
 
   })
+
+  new VolumeView(controller, document.getElementById('volume'))
+  new BPMView(controller, document.getElementById('bpm'))
+new Instrumentsiew(controller , document.getElementById('instruments'))
+
+
 };
+
+
+
+
+
+class View {
+  constructor(controller, element) {
+    this.element = element
+    this.controller = controller;
+    this.controller.addEventListener(SequencerEvent.DATA_CHANGE, (event)=>{
+      this.handleData(event.detail);
+    })
+
+  }
+  handleData(data) {
+    this.render(data);
+  }
+  render(data){}
+}
+
+
+class VolumeView extends View {
+  volume;
+
+  handleData(data) {
+    if(data.volume !== this.volume)
+      this.render(data);
+  }
+  render({volume}){
+    this.element.innerText = `volume: ${Math.round(volume*100)}` 
+  }
+}
+
+
+class BPMView extends View {
+  bpm;
+
+  handleData(data) {
+    if(data.bpm !== this.bpm)
+      this.render(data);
+  }
+  render({bpm}){
+    this.element.innerText = `BPM: ${bpm}` 
+  }
+}
+
+class Instrumentsiew extends View {
+  instruments;
+  instrument;
+
+  handleData(data) {
+    console.log(data)
+    if(data.instrument !== this.instrument)
+      this.render(data);
+  }
+  render({instruments, instrument}){
+    const instrumentEls = instruments.map(el=> `<div class="${el}"><span class="light small ${el === instrument ? 'on' : 'off'}"></span>${el}</div>`)
+    
+    this.element.innerHTML = instrumentEls.join('')
+  }
+}
+
+
 
