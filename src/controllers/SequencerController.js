@@ -11,12 +11,16 @@ export default class SequencerController extends EventTarget {
     document.addEventListener("keydown", this.onKey.bind(this));
     document.addEventListener("keydown", this.onKeyDown.bind(this));
     document.addEventListener("keyup", this.onKeyUp.bind(this));
+    document.addEventListener("visibilitychange", this.handleVisibilityChange.bind(this), false);
+
   }
 
   removeEventListeners() {
     document.removeEventListener("keydown", this.onKey.bind(this));
     document.removeEventListener("keydown", this.onKeyDown.bind(this));
     document.removeEventListener("keyup", this.onKeyUp.bind(this));
+    document.removeEventListener("visibilitychange", this.handleVisibilityChange.bind(this), false);
+
   }
 
   onKeyDown(key) {
@@ -115,6 +119,14 @@ export default class SequencerController extends EventTarget {
   }
   nextInstrument() {
     this.sequencer.nextInstrument();
+    this.updated();
+  }
+  handleVisibilityChange(){
+    if (document['hidden']) {
+      this.sequencer.stop();
+    } else {
+      this.sequencer.start();
+    }
     this.updated();
   }
 }
