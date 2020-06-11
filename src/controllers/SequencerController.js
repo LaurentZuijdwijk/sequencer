@@ -26,6 +26,11 @@ export default class SequencerController extends EventTarget {
     }
   }
 
+  selectSequence(val){
+    this.sequencer.selectSequence(val);
+
+  }
+
   onKeyUp(key) {
     // console.log("up", key.code, this._filling);
     if (key.code === "KeyF") {
@@ -42,23 +47,23 @@ export default class SequencerController extends EventTarget {
       }
       this.updated();
     }
-    if (key.code === "Space") {
+    else if (key.code === "Space") {
       this.sequencer.trigger();
     }
-    if (key.code === "KeyC") {
+    else if (key.code === "KeyC") {
       if (key.ctrlKey) {
         this.sequencer.clearAll();
       } else {
         this.clearInstrumentSequence();
       }
     }
-    if (key.code === "ArrowLeft") {
+    else if (key.code === "ArrowLeft") {
       this.prevInstrument();
     }
-    if (key.code === "ArrowRight") {
+    else if (key.code === "ArrowRight") {
       this.nextInstrument();
     }
-    if (key.code === "ArrowUp") {
+    else if (key.code === "ArrowUp") {
       if (key.ctrlKey) {
         /// something different
       } else {
@@ -67,6 +72,20 @@ export default class SequencerController extends EventTarget {
       this.updated();
       //   console.log(this.sequencer.volume);
     }
+  
+    else if (key.code === "Digit1") {
+      this.selectSequence(1)
+    }
+    else if (key.code === "Digit2") {
+      this.selectSequence(2)
+    }
+    else if (key.code === "Digit3") {
+      this.selectSequence(3)
+    }
+    else if (key.code === "Digit4") {
+      this.selectSequence(4)
+    }
+
     if (key.code === "ArrowDown") {
       if (key.ctrlKey) {
         /// something different

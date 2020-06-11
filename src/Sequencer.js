@@ -5,7 +5,12 @@ export default class Sequencer {
     constructor(audioctx) {
       this.audioctx = audioctx;
       this.bpm = 120;
-      this.sequence = Array.from(new Array(16),()=> [])
+      this.sequence1 = Array.from(new Array(16),()=> [])
+      this.sequence2 = Array.from(new Array(16),()=> [])
+      this.sequence3 = Array.from(new Array(16),()=> [])
+      this.sequence4 = Array.from(new Array(16),()=> [])
+      this.sequence = this.sequence1
+
       this.index = 0;
       this.instrumentIndex = 0;
       this.instruments = [];
@@ -15,6 +20,14 @@ export default class Sequencer {
 
     get instrument(){
         return this.instruments[this.instrumentIndex];
+    }
+
+    selectSequence(val){
+      if(val === 1) this.sequence = this.sequence1
+      if(val === 2) this.sequence = this.sequence2
+      if(val === 3) this.sequence = this.sequence3
+      if(val === 4) this.sequence = this.sequence4
+
     }
 
     toData(){
