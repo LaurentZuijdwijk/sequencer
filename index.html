@@ -8,15 +8,60 @@
       rel="stylesheet"
     />
     <style>
+      body {
+        background: #242a2e;
+        padding: 50px;
+        font-family: "Permanent Marker", cursive;
+        color: cornsilk;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      section.guide {
+          font-size: large;
+      }
+
       .sequencer {
         font-family: "Permanent Marker", cursive;
         color: cornsilk;
-        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(13,13,54,1) 62%, rgba(2,0,36,1) 100%);
+        /* background: linear-gradient(
+          90deg,
+          rgba(2, 0, 36, 1) 0%,
+          rgba(13, 13, 54, 1) 62%,
+          rgba(2, 0, 36, 1) 100%
+        ); */
         padding: 20px;
         width: 800px;
         height: 500px;
         position: relative;
+
+        border-radius: 38px;
+        box-shadow:  9px 9px 18px #1e2327, 
+             -9px -9px 18px #2a3135;
       }
+
+      #logo {
+        position: absolute;
+        right: 30px;
+        font-size: 46px;
+        top: 7px;
+        color: chartreuse;
+        text-shadow: 5px 5px #990000;
+      }
+
+      .inset {
+        background: #242a2e;
+        box-shadow: inset 9px 9px 18px #1e2327, 
+            inset -9px -9px 18px #2a3135;
+            border-radius: 12px;
+            padding: 20px;
+
+      }
+
+      #instruments {
+        width: 195px;
+      }
+
       .sequence-lights {
         display: flex;
         justify-content: space-around;
@@ -28,27 +73,27 @@
 
       .light.small {
         margin: 0 auto;
-  width: 14px;
-  height: 14px;
-  background-color: #F00;
-  border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 5px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.7) 0 2px 7px;
-  /* -webkit-animation: blinkRed 0.5s infinite;
+        width: 14px;
+        height: 14px;
+        background-color: #f00;
+        border-radius: 50%;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 5px 1px, inset #441313 0 -1px 9px,
+          rgba(255, 0, 0, 0.7) 0 2px 7px;
+        /* -webkit-animation: blinkRed 0.5s infinite;
   -moz-animation: blinkRed 0.5s infinite;
   -ms-animation: blinkRed 0.5s infinite;
   -o-animation: blinkRed 0.5s infinite;
   animation: blinkRed 0.5s infinite; */
 
-
-/* 
+        /* 
         width: 15px;
         height: 15px; */
         display: inline-block;
-        margin: 0 5px;
+        margin: 0 20px 0 0;
       }
 
       .light.on {
-        background-color:#ff0000;
+        background-color: #ff0000;
       }
 
       .light.off {
@@ -60,10 +105,15 @@
         height: 30px;
         display: inline-block;
         background-color: brown;
+        border-radius: 50%;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 5px 1px, inset #441313 0 -1px 9px,
+          rgba(255, 0, 0, 0.7) 0 2px 7px;
+
       }
 
       .seq-light[active="true"] {
         background-color: crimson;
+        
       }
     </style>
     <script src="./src/Oscillator.js" type="module"></script>
@@ -80,12 +130,13 @@
   </head>
   <body>
     <div class="sequencer">
-      <div id="instruments"></div>
-      <div id="instrument"></div>
-      <div id="volume"></div>
-      <div id="bpm"></div>
+      <div id="logo">Sickuencer</div>
+      <div id="instruments" class="inset"></div>
+      <div id="instrument" ></div>
+      <div id="volume" ></div>
+      <div id="bpm" ></div>
 
-      <div class="sequence-lights">
+      <div class="sequence-lights inset">
         <span class="seq-light" id="seq-0"></span>
         <span class="seq-light" id="seq-1"></span>
         <span class="seq-light" id="seq-2"></span>
@@ -104,5 +155,30 @@
         <span class="seq-light" id="seq-15"></span>
       </div>
     </div>
+
+    <section class="guide">
+
+        <h1>User guide</h1>
+        <p>Control using keyboad</p>
+
+        <ul>
+            <li>[ENTER] - Start/stop</li>
+            <li>[SPACE] - Sequence</li>
+            <li>[f] - Fill</li>
+            <li>[LEFT arrow] - Prev instrument left</li>
+            <li>[RIGHT arrow] - Next instrument</li>
+            <li>[UP arrow] - Volume up</li>
+            <li>[DOWN arrow] - Volume down</li>
+            <li>[C] - Clear</li>
+            <li>[Ctrl C] - Clear sequence</li>
+            <li>[1] - Sequence 1</li>
+            <li>[2] - Sequence 2</li>
+            <li>[3] - Sequence 3</li>
+            <li>[4] - Sequence 4</li>
+
+        </ul>
+
+    </section>
+
   </body>
 </html>
