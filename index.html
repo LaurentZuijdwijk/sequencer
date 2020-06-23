@@ -7,6 +7,9 @@
       href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
       rel="stylesheet"
     />
+    <link href="./style.css"
+    rel="stylesheet"
+  />
     <style>
       body {
         background: #242a2e;
@@ -121,6 +124,8 @@
     <script src="./src/Envelope.js" type="module"></script>
     <script src="./src/BufferLoader.js" type="module"></script>
     <script src="./src/Sequencer.js" type="module"></script>
+    <script src="./src/components/view.js" type="module"></script>
+    <script src="./src/components/volume-knob.js" type="module"></script>
     <script
       src="./src/controllers/SequencerController.js"
       type="module"
@@ -134,8 +139,10 @@
       <div id="logo">Sickuencer</div>
       <div id="instruments" class="inset"></div>
       <div id="instrument" ></div>
+    <div class="sliderControls">
       <div id="volume" ></div>
       <div id="bpm" ></div>
+    </div>
 
       <div class="sequence-lights inset">
         <span class="seq-light" id="seq-0"></span>
@@ -176,10 +183,9 @@
             <li>[2] - Sequence 2</li>
             <li>[3] - Sequence 3</li>
             <li>[4] - Sequence 4</li>
-
+            <li>[-] - Decrease BPM</li>
+            <li>[=] - Increase BPM</li>
         </ul>
-
     </section>
-
   </body>
 </html>

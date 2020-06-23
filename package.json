@@ -3,7 +3,7 @@
   "name": "synth",
   "version": "0.0.0",
   "scripts": {
-    "start": "node ./node_modules/.bin/dev-web-server PORT 9000 BASEDIR ."
+    "start": "node ./node_modules/.bin/dev-web-server PORT 9001 BASEDIR ."
   },
   "devDependencies": {},
   "dependencies": {

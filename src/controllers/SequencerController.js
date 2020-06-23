@@ -5,6 +5,9 @@ export default class SequencerController extends EventTarget {
     super();
     this.sequencer = sequencer;
     this.instruments = instruments;
+    setTimeout(()=>{
+      this.updated();
+    }, 10)
   }
 
   addEventListeners() {
@@ -89,6 +92,13 @@ export default class SequencerController extends EventTarget {
     else if (key.code === "Digit4") {
       this.selectSequence(4)
     }
+    else if (key.code === "Minus") {
+      this.decreaseBpm()
+    }
+    else if (key.code === "Equal") {
+      this.increaseBpm()
+    }
+    
 
     if (key.code === "ArrowDown") {
       if (key.ctrlKey) {
@@ -107,7 +117,7 @@ export default class SequencerController extends EventTarget {
     this.addEventListeners();
     this.sequencer.instruments = this.instruments;
     this.sequencer.start();
-    this.updated();
+    this.updated()
   }
 
   clearInstrumentSequence() {
@@ -121,6 +131,18 @@ export default class SequencerController extends EventTarget {
     this.sequencer.nextInstrument();
     this.updated();
   }
+  increaseBpm(){
+    this.sequencer.bpm++;
+    this.updated();
+
+  }
+  decreaseBpm(){
+    this.sequencer.bpm--;
+    this.updated();
+
+  }
+
+
   handleVisibilityChange(){
     if (document['hidden']) {
       this.sequencer.stop();

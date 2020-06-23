@@ -5,6 +5,11 @@ import BufferLoader from "./src/BufferLoader.js";
 import Sequencer from "./src/Sequencer.js";
 import SequencerController from './src/controllers/SequencerController.js';
 import SequencerEvent from './src/events/SequencerEvent.js';
+import View from './src/components/view.js'
+import VolumeView from './src/components/volume-knob.js'
+
+
+
 // document.onload = ()=>{
 //     const btn = document.querySelector('button')
 
@@ -141,42 +146,7 @@ document.onkeydown = (key) => {
   new VolumeView(controller, document.getElementById('volume'))
   new BPMView(controller, document.getElementById('bpm'))
 new Instrumentsiew(controller , document.getElementById('instruments'))
-
-
 };
-
-
-
-
-
-class View {
-  constructor(controller, element) {
-    this.element = element
-    this.controller = controller;
-    this.controller.addEventListener(SequencerEvent.DATA_CHANGE, (event)=>{
-      this.handleData(event.detail);
-    })
-
-  }
-  handleData(data) {
-    this.render(data);
-  }
-  render(data){}
-}
-
-
-class VolumeView extends View {
-  volume;
-
-  handleData(data) {
-    if(data.volume !== this.volume)
-      this.render(data);
-  }
-  render({volume}){
-    this.element.innerText = `volume: ${Math.round(volume*100)}` 
-  }
-}
-
 
 class BPMView extends View {
   bpm;
@@ -186,7 +156,23 @@ class BPMView extends View {
       this.render(data);
   }
   render({bpm}){
-    this.element.innerText = `BPM: ${bpm}` 
+    console.log(bpm)
+		if(!this.input){
+			this.element.innerHTML = `
+			<div class="sliderControl">
+			  <div class="label"><span class="bpmValue">${bpm}</span>
+        BPM</div>
+			  <div class="sliderWrapper">
+          <input type="range" min="60" max="220" value="${bpm}" class="slider" id="BpmSlider">
+			  </div>
+      </div>` 
+      this.input = this.element.querySelector('input');
+      this.label = this.element.querySelector('.bpmValue');
+		}
+		else {
+			this.label.innerText = bpm;
+			this.input.value = bpm;
+		}
   }
 }
 
