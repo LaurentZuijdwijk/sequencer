@@ -35,19 +35,16 @@ export default class Sequencer {
       if(val === 2) this.sequence = this.sequence2
       if(val === 3) this.sequence = this.sequence3
       if(val === 4) this.sequence = this.sequence4
-
     }
 
     toData(){
         return {
-
             instruments: this.instruments.map(e=>e.name),
             instrument: this.instrument.name,
             bpm: this._bpm,
             volume: this.volume,
             running: this.interval ? true: false
         }
-
     }
 
     nextInstrument() {

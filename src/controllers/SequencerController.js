@@ -104,6 +104,7 @@ export default class SequencerController extends EventTarget {
       if (key.ctrlKey) {
         /// something different
       } else {
+        this.setVolume(this.sequencer.volume - 0.05)
         this.sequencer.volume -= 0.05;
       }
       this.updated();
@@ -111,6 +112,10 @@ export default class SequencerController extends EventTarget {
   }
   updated() {
     this.dispatchEvent(SequencerEvent.UPDATE(this.sequencer.toData()));
+  }
+
+  setVolume(val){
+    this.sequencer.volume = val;
   }
 
   start() {
@@ -139,7 +144,11 @@ export default class SequencerController extends EventTarget {
   decreaseBpm(){
     this.sequencer.bpm--;
     this.updated();
+  }
 
+  setBpm(val){
+    this.sequencer.bpm = val;
+    this.updated();
   }
 
 

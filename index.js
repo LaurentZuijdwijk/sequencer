@@ -168,6 +168,11 @@ class BPMView extends View {
       </div>` 
       this.input = this.element.querySelector('input');
       this.label = this.element.querySelector('.bpmValue');
+      this.input.addEventListener('input', (e)=>{
+				console.log(e.target.value)
+				 this.controller.setBpm(e.target.value)
+			})
+
 		}
 		else {
 			this.label.innerText = bpm;
