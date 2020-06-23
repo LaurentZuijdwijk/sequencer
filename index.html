@@ -27,18 +27,13 @@
       .sequencer {
         font-family: "Permanent Marker", cursive;
         color: cornsilk;
-        /* background: linear-gradient(
-          90deg,
-          rgba(2, 0, 36, 1) 0%,
-          rgba(13, 13, 54, 1) 62%,
-          rgba(2, 0, 36, 1) 100%
-        ); */
+        background: linear-gradient(to top, #232326 0%,#222228 100%);
         padding: 20px;
-        width: 1000px;
-        height: 500px;
+        width: 900px;
+        height: 390px;
         position: relative;
 
-        border-radius: 38px;
+        border-radius: 3px;
         box-shadow:  9px 9px 18px #1e2327, 
              -9px -9px 18px #2a3135;
       }
@@ -54,17 +49,27 @@
       }
 
       .inset {
-        background: #242a2e;
+        /* border: 2px solid white;
+        border-radius: 5px; */
+        padding:10px;
+      
+        /* background: #242a2e;
         box-shadow: inset 9px 9px 18px #1e2327, 
             inset -9px -9px 18px #2a3135;
             border-radius: 12px;
-            padding: 20px;
+            padding: 20px; */
 
       }
 
       #instruments {
         width: 195px;
-      }
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+        height: 300px;
+        justify-content: space-between;
+        top: 77px;     
+     }
 
       .sequence-lights {
         display: flex;
@@ -137,6 +142,11 @@
   <body>
     <div class="sequencer">
       <div id="logo">Sickuencer</div>
+
+      <div class="group">
+        <input id="Radio1" name="Radios" type="checkbox" value="First Option" >
+        <label for="Radio1">start / stop</label>
+      </div>
       <div id="instruments" class="inset"></div>
       <div id="instrument" ></div>
     <div class="sliderControls">
